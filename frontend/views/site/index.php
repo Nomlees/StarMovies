@@ -1,4 +1,4 @@
-<? if (!empty($banners)): ?>
+<? if (!empty($banners)): ?> 
     <div class="main-slider swiper-container js-main-slider">
         <div class="main-slider__wrapper swiper-wrapper">
             <? foreach ($banners as $banner): ?>
