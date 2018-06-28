@@ -1,70 +1,63 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-  <div id="piecemaker-container">
-    <a>
-      <a href="https://www.filmpro.ru/movies/9164">
-      <p><img src="u\banner\1.jpg" width="1300pt" hight="700pt"></p>
-    </a>
+<? if (!empty($banners)): ?>
+    <div class="main-slider swiper-container js-main-slider">
+        <div class="main-slider__wrapper swiper-wrapper">
+            <? foreach ($banners as $banner): ?>
+                <? /* @var $banner \backend\models\Banner */ ?>
+                <div class="slide swiper-slide">
+                    <img class="slide__image swiper-lazy" alt="<?= $banner->name ?>"
+                         src="<?= $banner->getSRCPhoto(['suffix' => '_big']) ?>">
+                    <div class="slide__content">
+                        <div class="slide__cell">
+
+                            <? if (!empty($banner->text)): ?>
+                                <div class="slide__caption"><?= $banner->text ?></div>
+                            <? endif; ?>
+                            <? if (!empty($banner->link) || !empty($banner->link_text)): ?>
+                                <div class="slide__button">
+                                    <a class="btn"
+                                       href="<?= $banner->link ?>"><?= $banner->link_text ?>
+                                    </a>
+                                </div>
+                            <? endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <? endforeach; ?>
+        </div>
+        <div class="main-slider__pagination js-main-slider__pagination"></div>
+
     </div>
-  </div>
-  <!-- End Slider -->
-  <!-- Begin Wrapper -->
-  <div id="wrapper">
+<? endif; ?>
+<!-- End Slider -->
+<!-- Begin Wrapper -->
+<div id="wrapper">
     <!-- Begin Intro -->
     <div class="intro">
-      <h1>Популярное</h1>
+        <h1>Популярное</h1>
     </div>
     <!-- End Intro -->
     <!-- Begin About -->
     <div id="about">
-      <div class="one-fourth"><a href="#"><img src="http://ua.today/images/news/2017/%D0%9D%D0%BE%D1%8F%D0%B1%D1%80%D1%8C/22/maxresdefault%20(1).jpg" height="120" width="211" alt="" />
-        <h2 align="center">Мстители</h2>
-        <h3 align="center">Война бесконечности</h3>
-      </a>
-        <p>Спустя два года после распада Мстителей во время событий «Противостояния», Танос прибывает на Землю с целью ... </p>
-      </div>
-      <div class="one-fourth"><a href="#"><img src="https://7info.ru/wp-content/uploads/2018/05/papa-mama-gus.jpg" height="120" width="211" alt="" /></a>
-        <h2>Папа-мама гусь</h2>
-        <br>
-        <p>Гусь Пэм — изгой в своей стае. Оболтус и балагур, он ведет себя как великовозрастный ребенок, но скоро и ему придется повзрослеть...</p>
-      </div>
-      <div class="one-fourth"><a href="#"><img src="https://static.irk.ru/media/img/site/news/review/0/e61160e1-3320-4eb5-bbb5-39cff53c2e43_jpg_880x1000_stretch-1_q92.jpg" height="120" width="211" alt="" /></a>
-        <h2>Дэдпул-2</h2>
-        <br>
 
-        <p>Антигерой, который шутит про мамок своих врагов, возвращается</p>
-      </div>
-      <div class="one-fourth last"><a href="#"><img src="https://www.film.ru/sites/default/files/styles/epsa_1024x450/public/38452385-1044088.jpg" height="120" width="211" alt="" /></a>
-        <h2>8 подруг Оушена</h2>
-        <br>
-        <p>Спин-офф серии грабительских фильмов — с резко офеминившимся составом</p> </br>
-      </div>
+        <? foreach ($products as $product): ?>
+            <? /* @var $product \backend\models\Product */ ?>
+            <div class="one-fourth">
+                <a href="<?= $product->link ?>">
+
+                    <img src="<?= $product->getSRCPhoto(['suffix' => '_md','index'=>0]) ?>" height="120" width="211" alt="<?= $product->name?>" />
+                    <h2 align="center"><?= $product->name?></h2>
+                </a>
+                <p><?= $product->anons?></p>
+            </div>
+        <? endforeach; ?>
+
+
+
     </div>
     <div class="intro">
-      <br />
-      <br /><p>Случалось ли вам отказаться от просмотра интересного фильма из-за того, что его показывали в неудобное время? Приходилось ли искать в сети интернет, где смотреть фильмы онлайн? А спорить с домашними из-за выбора кино для просмотра по ТВ?</p>
-      <p>Все эти проблемы остались в прошлом! Откройте для себя фильмы онлайн в HD-качестве с кинотеатром STARMOVIE. Мы не просто освобождаем вас от необходимости идти в кинотеатр или изучать программу телепередач - у посетителей нашего ресурса гораздо больше возможностей.</p>
-      <p>Онлайн-кинотеатр STARMOVIE - это самая большая коллекция отечественных и зарубежных фильмов в рунете. Наша видеотека насчитывает более 30 тысяч фильмов и видеороликов, доступных для просмотра онлайн, и постоянно пополняется.</p>
-      <p>Онлайн-кинотеатр STARMOVIE - это:</p>
-      <ol>
-        <li>первый видеосервис в России, который позволяет смотреть фильмы онлайн в хорошем качестве;</li>
-        <li>возможность отложить просмотр фильма на время или начать смотреть кино онлайн с любого момента;</li>
-        <li>удобный поиск фильмов: по названию, году выпуска, стране производства или жанру;</li>
-        <li>фильмы в онлайне, для просмотра которых не требуется устанавливать видеоплееры или искать кодеки;</li>
-        <li>никаких смс и торрентов - смотрите онлайн фильмы хорошего качества без регистрации и без смс. Это действительно бесплатно для большей части видео!</li>
-      </ol>
-      <p>Регулярно мы добавляем на сайт самые свежие комедии, лучшие фильмы-приключения, боевики, и многие другие фильмы бесплатно.
-        <br>Откройте для себя возможность смотреть фильмы онлайн бесплатно в отличном качестве без регистрации и смс с кинотеатром STARMOVIE!</p>
-      <p>Убедитесь в том, что смотреть онлайн - просто и удобно!</p>
+     <p>  <?= $staticText[\backend\models\StaticTextItem::TEXT]['text']?></p>
     </div>
-
-  </div>
-
+</div>
 
 
 
